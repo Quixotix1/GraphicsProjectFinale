@@ -9,7 +9,17 @@ public class Movement : MonoBehaviour
     [SerializeField] float m_RaycastDistance;
     [SerializeField] float m_BumpDistance;
 
+    [SerializeField] LayerMask m_InteractableLayers;
+    [SerializeField] GameObject m_InteractKey;
+
+    RaycastHit m_LatestCheckedInteraction;
+    bool m_CanInteract;
     bool m_InMotion = false;
+
+    private void Start()
+    {
+        CheckInteract();
+    }
 
     void Update()
     {
@@ -34,10 +44,27 @@ public class Movement : MonoBehaviour
                 }
             }
         }
+
+        if (m_CanInteract && Input.GetButtonDown("Interact"))
+        {
+            if (m_LatestCheckedInteraction.transform.gameObject.TryGetComponent(out Interact i))
+            {
+                if (i.requiresKey && Inventory.Instance.keys.Contains(i.key) || !i.requiresKey)
+                {
+                    i.DoInteraction();
+                }
+                else
+                {
+                    i.ToggleLock();
+                }
+            }
+
+        } 
     }
 
     IEnumerator Turn(float lookValue)
     {
+        m_InteractKey.SetActive(false);
         m_InMotion = true;
 
         float direction = Mathf.Sign(lookValue);
@@ -59,10 +86,12 @@ public class Movement : MonoBehaviour
         }
 
         m_InMotion = false;
+        CheckInteract();
     }
 
     IEnumerator Move()
     {
+        m_InteractKey.SetActive(false);
         m_InMotion = true;
 
         float elapsed = 0f;
@@ -82,10 +111,12 @@ public class Movement : MonoBehaviour
         }
 
         m_InMotion = false;
+        CheckInteract();
     }
 
     IEnumerator Bump()
     {
+        m_InteractKey.SetActive(false);
         m_InMotion = true;
 
         float elapsed = 0f;
@@ -115,5 +146,12 @@ public class Movement : MonoBehaviour
         }
 
         m_InMotion = false;
+        CheckInteract();
+    }
+
+    private void CheckInteract()
+    {
+        m_CanInteract = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out m_LatestCheckedInteraction, m_RaycastDistance, m_InteractableLayers);
+        m_InteractKey.SetActive(m_CanInteract);
     }
 }
