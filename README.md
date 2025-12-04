@@ -71,15 +71,6 @@ The following is a flat silhouette shader used by the quest marker to draw over 
 
 The following shader uses a normal map and a factor to generate slight inconsistencies in how light reflects off the object, giving it a slightly more realistic look. It is used by the lockers, desk, and floating keyboard key.
 
-Shader "Custom/Bump"
-{
-    Properties
-    {
-        _baseMap ("Base Map", 2D) = "white" {}
-        _normalMap ("Normal Map", 2D) = "bump" {}
-        _normalFactor ("Normal Factor", Range(0,10)) = 1
-    }
-
     SubShader
     {
         Tags { "RenderPipeline" = "UniversalRenderPipeline" "RenderType" = "Opaque" }
@@ -152,4 +143,3 @@ Shader "Custom/Bump"
             ENDHLSL
         }
     }
-}
