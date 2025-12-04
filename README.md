@@ -23,6 +23,12 @@ Textures can easily be toggled using the 'R' or 'space' keys. Toggling the textu
 
 <img width="953" height="904" alt="image" src="https://github.com/user-attachments/assets/02fbd10f-cc34-4acc-b5af-ef18191614f9" />
 
+### Lighting Toggle
+
+The same as above can be done with lighting using the 'Q' key.
+
+<img width="2559" height="1596" alt="image" src="https://github.com/user-attachments/assets/29d86e57-6fd4-4835-9fa9-b5397c26faaf" />
+
 ### Keyboard Key
 
 The floating 'E' key appears when standing in front of an interactable object (i.e a door or staircase) and disappears when leaving. It uses a bump shader to emulate the slight roughness of older keyboard keys and to make it look more realistic. 
