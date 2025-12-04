@@ -23,18 +23,6 @@ Textures can easily be toggled using the 'R' or 'space' keys. Toggling the textu
 
 <img width="953" height="904" alt="image" src="https://github.com/user-attachments/assets/02fbd10f-cc34-4acc-b5af-ef18191614f9" />
 
-### Retro Shader
-
-There is a retro shader that toggles the resolution and color channels of the screen using the [F] key. The retro shader is a render texture of size 384x216 with a point filter and R8G8B8A8_UNORM color format.
-
-<img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/a92b8309-4cfd-4905-8ef4-3e8109e648f1" />
-
-The shader is applied as follows:
-
-<img width="970" height="159" alt="image" src="https://github.com/user-attachments/assets/ec6efa88-cd58-4474-942b-4f2f61cdb4be" />
-
-The above two functions are contained within the update function of ChangeResolution, found in Assets/Scripts/Utility/ChangeResolution.cs
-
 ### Keyboard Key
 
 The floating 'E' key appears when standing in front of an interactable object (i.e a door or staircase) and disappears when leaving. It uses a bump shader to emulate the slight roughness of older keyboard keys and to make it look more realistic. 
@@ -54,6 +42,18 @@ void Update()
 The lock appears when trying to access a locked door with the 'E' key without a key. It floats in the air briefly before disappearing. The script to do this is contained in Movement.cs, Interact.cs, and Inventory.cs.
 
 <img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/35f41697-f65c-41a6-a6c1-0c34e959b608" />
+
+### Retro Shader
+
+There is a retro shader that toggles the resolution and color channels of the screen using the [F] key. The retro shader is a render texture of size 384x216 with a point filter and R8G8B8A8_UNORM color format.
+
+<img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/a92b8309-4cfd-4905-8ef4-3e8109e648f1" />
+
+The shader is applied as follows:
+
+<img width="970" height="159" alt="image" src="https://github.com/user-attachments/assets/ec6efa88-cd58-4474-942b-4f2f61cdb4be" />
+
+The above two functions are contained within the update function of ChangeResolution, found in Assets/Scripts/Utility/ChangeResolution.cs
 
 ### Window Shader
 
